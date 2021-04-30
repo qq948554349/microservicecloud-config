@@ -1,0 +1,77 @@
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 8001
+spring:
+  profiles: dev
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-cfg.xml
+  type-aliases-package: org.kayn.springcloud.entities
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+info:
+  app.name: microservicecloud
+  company.name: Team Kayn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+  ---
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-cfg.xml
+  type-aliases-package: org.kayn.springcloud.entities
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com
+  instance:
+    instance-id: dept-8001.com
+    prefer-ip-address: true
+info:
+  app.name: microservicecloud
+  company.name: Team Kayn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
